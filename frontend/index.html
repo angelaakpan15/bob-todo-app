@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-icon">✓</div>
+      <div>
+        <h1>My Tasks</h1>
+        <p class="subtitle">Stay organized and get things done</p>
+      </div>
+    </header>
+
+    <!-- Notification / Toast for errors or success -->
+    <div id="notification" class="notification hidden" role="alert"></div>
+
+    <!-- Create Todo Form -->
+    <section class="card form-card">
+      <form id="todo-form">
+        <div class="input-group">
+          <input
+            type="text"
+            id="todo-title"
+            name="title"
+            placeholder="What needs to be done?"
+            required
+            autocomplete="off"
+            maxlength="200"
+          >
+          <button type="submit" id="add-btn" class="btn btn-primary">
+            <span>+ Add Task</span>
+          </button>
+        </div>
+        <div class="description-group">
+          <input
+            type="text"
+            id="todo-description"
+            name="description"
+            placeholder="Add extra details or notes (optional)"
+            autocomplete="off"
+          >
+        </div>
+      </form>
+    </section>
+
+    <!-- Controls: Filter & Counters -->
+    <section class="controls-section">
+      <div class="filter-tabs" role="tablist">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="active" role="tab" aria-selected="false">Active</button>
+        <button class="filter-btn" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+      </div>
+      <div class="task-stats" id="task-stats">
+        <span id="active-count">0 tasks left</span>
+      </div>
+    </section>
+
+    <!-- Todo List Container -->
+    <main class="todo-main">
+      <div id="loading-spinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+        <p>Loading tasks...</p>
+      </div>
+
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">📝</div>
+        <h3 id="empty-title">No tasks found</h3>
+        <p id="empty-subtitle">Add a task above to get started!</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
